@@ -132,6 +132,9 @@
                 <div class="col-md-4">
                     <button id="submit" type=button name="submit" class="btn btn-primary">Generate</button>
                 </div>
+                <div class="col-md-4">
+                    <button id="dl" type=button class="btn btn-primary" style="display: none">Download</button>
+                </div>
             </div>
         </fieldset>
     </form>
@@ -250,23 +253,13 @@
 
 
         $(document).ready(function () {
-            function download(filename, content)
-            {  
-                var file = new Blob([content], 
-                                { 
-                                    type: 'text/xml;charset=UTF-8' 
-                                });
-                var reader = new FileReader(); 
-                reader.onload = function() 
-                                { 
-                                    var popup = window.open(); 
-                                    var link = document.createElement('a');
-                                    link.setAttribute('href', reader.result);
-                                    link.setAttribute('download', filename);
-                                    popup.document.body.appendChild(link); 
-                                    link.click(); 
-                                } 
-                reader.readAsDataURL(file); 
+  
+            function download(filename, text) {
+                var element = $("#dl");
+                element.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.attr('download', filename);
+                element.show();
+                $("#submit").hide();
             }
 
             $( "#autoconnect" ).change(function() {
