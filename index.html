@@ -16,7 +16,8 @@
         </style>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
+    <link rel="icon" href="https://fav.farm/👻" />   
+    </head>
   <body>
 
     <!-- Optional JavaScript -->
@@ -274,10 +275,10 @@
 
             $('#submit').click(function(e) {
                 e.preventDefault();
-                var login = $("#login").val(),
-                password = $('#password').val(),
-                sharedsecret = $('#sharedsecret').val(),
-                ssids = $('#ssids').val(),
+                var login = $("#login").val().replace(/&/g, '&amp;'),
+                password = $('#password').val().replace(/&/g, '&amp;'),
+                sharedsecret = $('#sharedsecret').val().replace(/&/g, '&amp;'),
+                ssids = $('#ssids').val().replace(/&/g, '&amp;'),
                 vpntype = $('#vpntype').val(),
                 name = $('#name').val() || 'Autoconnect VPN',
                 hostname = $('#hostname').val(),
