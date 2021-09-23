@@ -254,7 +254,7 @@
   
             function download(filename, text) {
                 var element = $("#dl");
-                element.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.attr('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(text));
                 element.attr('download', filename);
                 element.show();
             }
