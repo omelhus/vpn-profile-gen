@@ -133,7 +133,7 @@
                     <button id="submit" type=button name="submit" class="btn btn-primary">Generate</button>
                 </div>
                 <div class="col-md-4">
-                    <button id="dl" type=button class="btn btn-primary" style="display: none">Download</button>
+                    <a id="dl" type=button class="btn btn-success" style="display: none">Download</a>
                 </div>
             </div>
         </fieldset>
@@ -259,7 +259,6 @@
                 element.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
                 element.attr('download', filename);
                 element.show();
-                $("#submit").hide();
             }
 
             $( "#autoconnect" ).change(function() {
