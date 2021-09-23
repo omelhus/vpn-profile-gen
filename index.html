@@ -250,15 +250,23 @@
 
 
         $(document).ready(function () {
-
-            function download(filename, text) {
-                var element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
-                element.style.display = 'none';
-                document.body.appendChild(element);
-                element.click();
-                document.body.removeChild(element);
+            function download(filename, content)
+            {  
+                var file = new Blob([content], 
+                                { 
+                                    type: 'text/xml;charset=UTF-8' 
+                                });
+                var reader = new FileReader(); 
+                reader.onload = function() 
+                                { 
+                                    var popup = window.open(); 
+                                    var link = document.createElement('a');
+                                    link.setAttribute('href', reader.result);
+                                    link.setAttribute('download', filename);
+                                    popup.document.body.appendChild(link); 
+                                    link.click(); 
+                                } 
+                reader.readAsDataURL(file); 
             }
 
             $( "#autoconnect" ).change(function() {
@@ -350,9 +358,7 @@
                 }
 
                 xmlString = xmlString.replace('{{onDemandRules}}', onDemandRules)
-                console.log(xmlString);
                 download('vpn.mobileconfig', xmlString);
-                location.reload(true)
             })
         });
     </script>
